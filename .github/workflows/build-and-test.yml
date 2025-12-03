@@ -6,11 +6,13 @@ on:
       - main
       - 'ESA**'
       - 'XAP**'
+      - 'dependabot/**'
   pull_request:
     branches:    
       - main
       - 'ESA**'
       - 'XAP**'
+      - 'dependabot/**'
 
 jobs:
   build:
