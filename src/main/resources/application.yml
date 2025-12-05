@@ -9,3 +9,13 @@ management:
   endpoint:
     health:
       show-details: always
+
+resilience4j:
+  retry:
+    instances:
+      live-updates-retry:
+        max-attempts: 3
+        wait-duration: 5s
+        ignore-exceptions:
+          - com.esportslan.microservices.live_updates.exceptions.BadRequestErrorException
+          - com.esportslan.microservices.live_updates.exceptions.InternalErrorException
