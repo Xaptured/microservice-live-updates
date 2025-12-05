@@ -26,6 +26,7 @@ public class LiveUpdateEventConsumer {
     @RabbitListener(queues = "live_updates_queue")
     public void onMessage(UpdateRequestEvent event) {
         try {
+            LOGGER.info("Consuming event (eid={}): {}", event.getEventId());
             theJackFolioDBClientHelper.saveUpdateRequest(event);
             String destination = switch (event.getCategory()) {
                 case SCHEDULE -> "/topic/schedule";
