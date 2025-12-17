@@ -28,8 +28,8 @@ public class LiveUpdateController {
     @Retry(name = "live-updates-retry")
     @GetMapping
     public ResponseEntity<List<UpdateRequestEvent>> getLatest(@RequestParam(name = "category") UpdateCategory category,
-                                                             @RequestParam(name = "limit", defaultValue = "7") int limit) {
-        List<UpdateRequestEvent> updateRequestEvents = consumer.fetchLatestUpdates(category, limit);
+                                                             @RequestParam(name = "limit", defaultValue = "7") int limit, @RequestParam(name = "tournamentName") String tournamentName) {
+        List<UpdateRequestEvent> updateRequestEvents = consumer.fetchLatestUpdates(category, limit, tournamentName);
         return ResponseEntity.status(HttpStatus.OK).body(updateRequestEvents);
     }
 }

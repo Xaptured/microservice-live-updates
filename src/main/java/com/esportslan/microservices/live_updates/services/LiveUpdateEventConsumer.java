@@ -44,7 +44,7 @@ public class LiveUpdateEventConsumer {
         }
     }
 
-    public List<UpdateRequestEvent> fetchLatestUpdates(UpdateCategory updateCategory, int limit) {
-        return theJackFolioDBClientHelper.fetchLatestUpdates(updateCategory, limit);
+    public List<UpdateRequestEvent> fetchLatestUpdates(UpdateCategory updateCategory, int limit, String tournamentName) {
+        return theJackFolioDBClientHelper.fetchLatestUpdates(updateCategory, limit, tournamentName);
     }
 }
