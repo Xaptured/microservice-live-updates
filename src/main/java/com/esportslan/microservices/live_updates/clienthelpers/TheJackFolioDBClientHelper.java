@@ -30,10 +30,10 @@ public class TheJackFolioDBClientHelper {
         }
     }
 
-    public List<UpdateRequestEvent> fetchLatestUpdates(UpdateCategory updateCategory, int limit) {
+    public List<UpdateRequestEvent> fetchLatestUpdates(UpdateCategory updateCategory, int limit, String tournamentName) {
         try {
             LOGGER.info("Calling database client to fetch latest updated events");
-            return theJackFolioDBClient.fetchLatestUpdates(updateCategory, limit).getBody();
+            return theJackFolioDBClient.fetchLatestUpdates(updateCategory, limit, tournamentName).getBody();
         } catch (InternalErrorException exception) {
             LOGGER.error("Got exception while fetching latest updated events details");
             throw new InternalErrorException("Got exception while fetching latest updated events details: " + exception.getMessage(), exception);

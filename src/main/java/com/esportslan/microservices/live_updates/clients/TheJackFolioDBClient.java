@@ -19,5 +19,5 @@ public interface TheJackFolioDBClient {
 
     @GetMapping("/events-lan/live-updates")
     public ResponseEntity<List<UpdateRequestEvent>> fetchLatestUpdates(@RequestParam(name = "category") UpdateCategory category,
-                                                                  @RequestParam(name = "limit") int limit);
+                                                                  @RequestParam(name = "limit") int limit, @RequestParam(name = "tournamentName") String tournamentName);
 }

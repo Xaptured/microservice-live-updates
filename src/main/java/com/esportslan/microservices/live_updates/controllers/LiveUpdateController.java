@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @Tag(name = "LiveUpdates", description = "Event management APIs for live updates")
 @RestController
 @RequestMapping("/live-updates")
@@ -27,10 +26,10 @@ public class LiveUpdateController {
             description = "Fetch inactive events for admin"
     )
     @Retry(name = "live-updates-retry")
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<UpdateRequestEvent>> getLatest(@RequestParam(name = "category") UpdateCategory category,
-                                                             @RequestParam(name = "limit", defaultValue = "7") int limit) {
-        List<UpdateRequestEvent> updateRequestEvents = consumer.fetchLatestUpdates(category, limit);
+                                                             @RequestParam(name = "limit", defaultValue = "7") int limit, @RequestParam(name = "tournamentName") String tournamentName) {
+        List<UpdateRequestEvent> updateRequestEvents = consumer.fetchLatestUpdates(category, limit, tournamentName);
         return ResponseEntity.status(HttpStatus.OK).body(updateRequestEvents);
     }
 }
